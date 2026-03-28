@@ -1,1 +1,104 @@
-# Buat-Kamu
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Untuk Kamu ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    color: #333;
+    overflow: hidden;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 350px;
+    margin: 100px auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #ff4b5c;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #ff1e3c;
+}
+
+#message {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+/* animasi hati */
+.heart {
+    position: absolute;
+    color: red;
+    animation: fall 5s linear infinite;
+}
+
+@keyframes fall {
+    0% { top: -10%; opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+</style>
+
+</head>
+<body>
+
+<div class="card">
+    <h1>Hai Kamu 😌</h1>
+    <p>Kalau kamu lagi bad mood...</p>
+    <button onclick="moodBooster()">Klik Ini ❤️</button>
+    <div id="message"></div>
+</div>
+
+<audio autoplay loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function moodBooster() {
+    const messages = [
+        "Aku tau kamu lagi bete... tapi kamu tetap lucu 😆",
+        "Kalau kamu sedih, dunia ikut redup... termasuk aku 🥺",
+        "Sini bad mood-nya kasih ke aku aja, kamu senyum ya ❤️",
+        "Aku gak sempurna... tapi aku selalu ada buat kamu ☀️",
+        "Kalau peluk bisa online, kamu udah aku peluk dari tadi 🤗",
+        "Udah ya jangan ngambek... nanti aku jadi makin sayang 😏"
+    ];
+
+    const random = Math.floor(Math.random() * messages.length);
+    document.getElementById("message").innerText = messages[random];
+}
+
+// bikin hati jatuh
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
+}, 300);
+</script>
+
+</body>
+</html>
